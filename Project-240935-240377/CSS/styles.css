@@ -1,0 +1,404 @@
+body {
+    font-family: 'Century Gothic', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 10px 20px;
+}
+
+.navbar .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: lightpink;
+}
+
+.navbar nav ul {
+    list-style: none;
+    display: flex;
+    gap: 75px;
+}
+
+.navbar nav ul li a{
+    text-decoration: none;
+    color: lightpink;
+    font-weight: bold;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    padding: 10px 20px;
+    display: block;
+    color: lightpink;
+    font-size: 0.9em;
+    text-decoration: none;
+}
+
+.dropdown-content a:hover {
+    background-color: lightpink;
+    color: white;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    background: linear-gradient(to bottom, #ffe7ed, #fff);
+    padding: 50px 20px;
+}
+
+/* Product Grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Product Card */
+.product-card {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    text-align: center;
+    padding: 15px;
+}
+
+.product-card img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+/* Button Styles */
+.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn.view-details {
+    background-color: white;
+    color: rgb(255, 0, 111);
+    border: none;
+}
+
+.btn.view-details:hover {
+    background-color: lightpink;
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+/* Product Details */
+.product-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 20px;
+}
+
+.product-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+/* Product Slider */
+.product-slider {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.product-slider .slide {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.product-slider .slide.active {
+    display: block;
+}
+
+.product-slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-slider .prev-btn,
+.product-slider .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+.product-slider .prev-btn {
+    left: 10px;
+}
+
+.product-slider .next-btn {
+    right: 10px;
+}
+
+/* Product Info */
+.product-info {
+    max-width: 500px;
+}
+
+.product-info h1,
+.product-info h2,
+.product-info h3 {
+    color: #333;
+}
+
+.product-info p,
+.product-info ul,
+.product-info ol {
+    margin-bottom: 15px;
+}
+
+/* Add to Cart Button */
+.product-info .btn.add-to-cart {
+    background-color: #ff66a1;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.product-info .btn.add-to-cart:hover {
+    background-color: #e0558f;
+}
+
+/* Sale Badge */
+.sale-badge {
+    background-color: lightpink;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+/* Quantity Buttons */
+.quantity-container {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    gap: 10px;
+}
+
+.quantity-btn {
+    background-color: lightpink;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.quantity-btn:hover {
+    background-color: lightpink;
+}
+
+#quantity-input {
+    width: 50px;
+    text-align: center;
+    font-size: 16px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Add to Cart Button */
+.btn.add-to-cart {
+    background-color: lightpink;
+    color: #fff;
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    flex-grow: 4;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.btn.add-to-cart:hover {
+    background-color: hotpink;
+}
+
+/* Sticky Review Icon */
+.sticky-review-icon {
+    position: fixed;
+    right: 10px;
+    bottom: 20px;
+    z-index: 1000;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.sticky-review-icon img {
+    width: 100px;
+    height: auto;
+}
+
+.sticky-review-icon:hover {
+    transform: scale(1.1);
+}
+
+/* Reviews Section */
+.reviews-section {
+    padding: 20px;
+    background-color: #fff;
+    margin-top: 40px;
+    border-top: 1px solid #ddd;
+}
+
+.reviews-section h2 {
+    font-size: 24px;
+    color: #333;
+}
+
+.review-list .review {
+    margin-bottom: 20px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.review-list .review span {
+    color: gold;
+    font-size: 18px;
+}
+
+.write-review {
+    margin-top: 30px;
+}
+
+.write-review h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+#review-form textarea {
+    width: 100%;
+    height: 100px;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#review-form .btn {
+    background-color: lightpink;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#review-form .btn:hover {
+    background-color: lightpink;
+}
+
+/* Media Queries for Responsiveness */
+@media only screen and (max-width: 768px) {
+    .navbar nav ul {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 10px;
+    }
+
+    .product-info {
+        max-width: 100%;
+    }
+
+    .product-container {
+        flex-direction: column;
+    }
+
+    .product-slider {
+        width: 100%;
+        height: auto;
+    }
+
+    .sticky-review-icon {
+        bottom: 10px;
+        right: 10px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .navbar .logo {
+        font-size: 20px;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .btn {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    .product-info .btn.add-to-cart {
+        padding: 10px 15px;
+        font-size: 16px;
+    }
+}

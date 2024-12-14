@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReviewProduct</title>
+    <link rel="stylesheet" href="/CSS/styles.css">
+    <script src="/JS/script.js" defer></script>
+    <style>
+
+        .main-content {
+            display: flex;
+            align-items: flex-start; 
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .product-container {
+            margin-left: 20px;
+        }
+
+        .review-container {
+            display: grid;
+            grid-auto-flow: column; 
+            grid-template-rows: repeat(3, auto); 
+            gap: 20px;
+            max-height: calc(3 * 250px); 
+        }
+
+
+        .review-card {
+            background-color: #ffc0cb; 
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            color: #333;
+            width: 300px; 
+            height: auto; 
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; 
+        }
+
+        h3 {
+            margin: 0;
+            font-size: 1.1em;
+            color: #ffffff;
+        }
+
+        .verified {
+            font-size: 0.9em;
+            color: #ffffff;
+        }
+
+        .date {
+            color: #ffffff;
+            font-size: 0.8em;
+            margin-bottom: 10px;
+        }
+
+        .stars {
+            color: #fdda0d; 
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        .review-text {
+            font-size: 0.9em;
+            line-height: 1.4em;
+            color: #ffffff;
+        }
+
+        #review-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            width: 400px;
+            z-index: 1000;
+        }
+
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        .rating-container {
+            display: flex;
+            justify-content: center;
+            margin: 10px 0;
+        }
+
+        .rating-star {
+            font-size: 30px;
+            color: transparent;
+            margin: 0 5px;
+            cursor: pointer;
+            -webkit-text-stroke: 1px #ffd700; 
+            transition: color 0.2s;
+        }
+
+        .rating-star.filled {
+            color: #ffd700; 
+        }
+
+        #write-review-btn {
+            margin: 20px 0;
+            padding: 10px 20px;
+            background-color: #ffc0cb; 
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #write-review-btn:hover {
+            background-color: #ff8ca1;
+        }
+
+        #submit-review-btn {
+            padding: 10px 20px;
+            background-color: #ffc0cb;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #submit-review-btn:hover {
+            background-color: #ff8ca1;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+
+<script>
+
+    function selectRating(starIndex) {
+        const stars = document.querySelectorAll('.rating-star');
+        stars.forEach((star, index) => {
+            if (index < starIndex) {
+                star.classList.add('filled');
+            } else {
+                star.classList.remove('filled');
+            }
+        });
+    }
+
+
+    function toggleReviewPopup() {
+        const popup = document.getElementById('review-popup');
+        popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
+    }
+
+
+    function submitReview() {
+        const reviewText = document.getElementById('review-text').value;
+        const rating = document.querySelectorAll('.rating-star.filled').length;
+
+        if (reviewText.trim() === '' || rating === 0) {
+            alert('Please provide a review and select a rating.');
+            return;
+        }
+
+        const reviewContainer = document.querySelector('.review-container');
+        const newReviewCard = document.createElement('div');
+        newReviewCard.classList.add('review-card');
+        
+        const newReviewContent = `
+            <h3>Your Name <span class="verified">✔ Verified</span></h3>
+            <p class="date">${new Date().toLocaleDateString()}</p>
+            <div class="stars">${'★'.repeat(rating)}${'☆'.repeat(5 - rating)}</div>
+            <p class="review-text">${reviewText}</p>
+        `;
+
+        newReviewCard.innerHTML = newReviewContent;
+
+        reviewContainer.appendChild(newReviewCard);
+
+        toggleReviewPopup();
+
+        document.getElementById('review-text').value = '';
+        const stars = document.querySelectorAll('.rating-star');
+        stars.forEach(star => star.classList.remove('filled'));
+    }
+</script>
+</head>
+<body>
+    <header class="navbar" style="background-color: lightpink;">
+        <div class="logo" style="color: white;">Silkbotanics</div>
+        <nav>
+            <ul>
+                <li><a href="Project-240935-240377.html" style="color: white;">Home</a></li>
+                <li><a href="kits&bundles.html" style="color: white;">Kits & Bundles</a></li>
+                <div class="dropdown">
+                    <a href="#" class="dropbtn" style="color: white; font-weight: bold; text-decoration: none;">Products</a>
+                    <div class="dropdown-content">
+                        <a href="AllProducts.html">All Products</a>
+                        <a href="Hair.html">Hair</a>
+                        <a href="Lashesnbrows.html">Lashes & Brows</a>
+                        <a href="Body.html">Body</a>
+                    </div>
+                </div>
+                <li><a href="Aboutus.html" style="color: white;">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="main-content">
+            <div class="product-container">
+                <div class="product-slider">
+                    <div>
+                        <img src="Images/Revive Oil.jpg" alt="Growth Boost Image 1">
+                    </div>
+                </div>
+            </div>
+
+            <div class="review-container">
+                <div class="review-card">
+                    <h3>Nada N. <span class="verified">✔ Verified</span></h3>
+                    <p class="date">4/8/2024</p>
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="review-text">
+                        I purchased the shower bundle and lip care bundle and honestly I didn't expect this awesome outcome. The shower bundle leaves the skin smooth as silk and the feeling continues for 24 hours, I simply love it!! Definitely I will order again thank you for your follow up.
+                    </p>
+                </div>
+
+                <div class="review-card">
+                    <h3>Nour R. <span class="verified">✔ Verified</span></h3>
+                    <p class="date">2/22/2024</p>
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="review-text">
+                        Great quality, keep it up 👌 maybe change packaging.
+                    </p>
+                </div>
+
+                <div class="review-card">
+                    <h3>Abir M. <span class="verified">✔ Verified</span></h3>
+                    <p class="date">8/30/2023</p>
+                    <div class="stars">⭐⭐⭐⭐</div>
+                    <p class="review-text">
+                        🙌✨🔥
+                    </p>
+                </div>
+
+                <div class="review-card">
+                    <h3>Reine S. <span class="verified">✔ Verified</span></h3>
+                    <p class="date">5/15/2023</p>
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="review-text">
+                        smells so good
+                    </p>
+                </div>
+
+                <div class="review-card">
+                    <h3>Hanaa J. <span class="verified">✔ Verified</span></h3>
+                    <p class="date">5/15/2023</p>
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="review-text">
+                        Favvv lipcare products ❤❤
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <button id="write-review-btn" onclick="toggleReviewPopup()">Write a Review</button>
+
+    <div id="review-popup">
+        <h2>Write a Review</h2>
+        <textarea id="review-text" rows="4" placeholder="Write your review here..."></textarea>
+        <div class="rating-container">
+            <span class="rating-star" onclick="selectRating(1)">★</span>
+            <span class="rating-star" onclick="selectRating(2)">★</span>
+            <span class="rating-star" onclick="selectRating(3)">★</span>
+            <span class="rating-star" onclick="selectRating(4)">★</span>
+            <span class="rating-star" onclick="selectRating(5)">★</span>
+        </div>
+        <button id="submit-review-btn" onclick="submitReview()">Submit Review</button>
+    </div>
+
+    <div id="popup-overlay" class="popup-overlay" style="display: none;" onclick="toggleReviewPopup()"></div>
+</body>
+</html>

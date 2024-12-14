@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silkbotanics</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            color: #333;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: lightpink;
+            padding: 15px 20px;
+        }
+
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .navbar nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: lightpink;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            min-width: 160px;
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+            color: #333;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: lightpink;
+            color: white;
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background-color: lightpink;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .navbar nav ul {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+                padding-left: 20px;
+            }
+
+            .hero {
+                font-size: 1em;
+                padding: 30px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">Silkbotanics</div>
+        <nav>
+            <ul>
+                <li><a href="Project-240935-240377.html">Home</a></li>
+                <li><a href="kits&bundles.html">Kits & Bundles</a></li>
+                <div class="dropdown">
+                    <a href="#" class="dropbtn" style="color: lightpink; font-weight: bold; text-decoration: none;">Products</a>
+                    <div class="dropdown-content">
+                        <a href="AllProducts.html">All Products</a>
+                        <a href="Hair.html">Hair</a>
+                        <a href="Lashesnbrows.html">Lashes & Brows</a>
+                        <a href="Body.html">Body</a>
+                    </div>
+                </div>
+                <li><a href="Aboutus.html">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" style="background-color: lightpink;">
+        We're excited to bring you exclusive beauty kits and bundles designed to make your routine easier and more enjoyable. Stay tuned for curated collections that will elevate your beauty experience—coming soon to Silkbotanics!
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Silkbotanics. All rights reserved.</p>
+    </footer>
+
+    <script src="/JS/script.js"></script>
+</body>
+</html>
